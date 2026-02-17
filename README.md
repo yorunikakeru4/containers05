@@ -1,5 +1,13 @@
 # Лабораторная работа №5: Запуск сайта в контейнере
 
+## Студент: Кроитор Александр
+
+## Группа: IA2403
+
+## Преподаватель: M. Croitor
+
+## Дата: 17-02-2026
+
 ## Цель работы: Выполнив данную работу студент сможет подготовить образ контейнера для запуска веб-сайта на базе Apache HTTP Server + PHP (mod_php) + MariaDB.
 
 ## Задание: Создать Dockerfile для сборки образа контейнера, который будет содержать веб-сайт на базе Apache HTTP Server + PHP (mod_php) + MariaDB. База данных MariaDB должна храниться в монтируемом томе. Сервер должен быть доступен по порту 8000.
@@ -14,14 +22,14 @@ podman version 5.7.0
 Дерево проекта:
 
 ```bash
- tree
-└──  .
-    ├──  README.md
-    ├──  Dockerfile
-    └──  files/
-        ├──  apache2
-        ├──  mariadb
-        └──  php
+tree
+└── .
+    ├── README.md
+    ├── Dockerfile
+    └── files/
+        ├── apache2
+        ├── mariadb
+        └── php
 ```
 
 ```dockerfile
@@ -80,17 +88,17 @@ podman cp apache2-php-mariadb:/etc/php/8.4/apache2/php.ini files/php/
 
 ```bash
 tree
-└──  .
-    ├──  Dockerfile
-    ├──  README.md
-    └──  files/
-        ├──  apache2/
-        │   ├──  000-default.conf
-        │   └──  apache2.conf
-        ├──  mariadb/
-        │   └──  50-server.cnf
-        └──  php/
-            └──  php.ini
+└── .
+    ├── Dockerfile
+    ├── README.md
+    └── files/
+        ├── apache2/
+        │   ├── 000-default.conf
+        │   └── apache2.conf
+        ├── mariadb/
+        │   └── 50-server.cnf
+        └── php/
+            └── php.ini
 ```
 
 Переходим в  000-default.conf через nvim
@@ -130,19 +138,19 @@ max_execution_time = 120
 
 ```bash
 tree
-└──  .
-    ├──  Dockerfile
-    ├──  README.md
-    └──  files/
-        ├──  apache2/
-        │   ├──  000-default.conf
-        │   └──  apache2.conf
-        ├──  mariadb/
-        │   └──  50-server.cnf
-        ├──  php/
-        │   └──  php.ini
-        └──  supervisor/
-            └──  supervisord.conf
+└── .
+    ├── Dockerfile
+    ├── README.md
+    └── files/
+        ├── apache2/
+        │   ├── 000-default.conf
+        │   └── apache2.conf
+        ├── mariadb/
+        │   └── 50-server.cnf
+        ├── php/
+        │   └── php.ini
+        └── supervisor/
+            └── supervisord.conf
 cat files/supervisor/supervisord.conf
 [supervisord]
 nodaemon=true
